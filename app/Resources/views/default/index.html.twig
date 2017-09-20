@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {% block content %}
+                {% for page in pages %}
+                    <a href="{{ path('show_page', {'id' : page.id}) }}">{{ page.title }}</a>
+                {% endfor %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% include('default/stylesheets.html.twig') %}
