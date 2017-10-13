@@ -6,31 +6,11 @@ Test project pagination in foscommentsbundle
 1. Integrate FosCommentBundle with Page Entity
 2. Output comments on page
 3. Override service FOS\CommentBundle\Entity\CommentManager.php
-(method findCommentsByThread) to pagination by root comments (with depth = 0)
+(method findCommentsByThread) to pagination by root comments (with depth = 0).
+You need to display comments with depths > 0 too for coresponding root comments on current page
+  
 For test purpose you can use $_GET parameter in your service
 
-4. Override part of fos comments.js (part of used code for example) in your custom js file
-
-```js
-FOS_COMMENT.thread_container.on('click',
-                '.fos_comment_comment_reply_show_form',
-                function(e) {
-    ...
-                    var container_in = parent.find('> .fos_comment_comment_reply');
-    ...
-
-                    FOS_COMMENT.get(
-                        form_data.url,
-                        {parentId: form_data.parentId},
-                        function(data) {
-    ...      
-                            container_in.addClass('fos_comment_replying');
-                            container_in.html(data);
-    ...                        
-                        }
-                    );
-                }
-            );
-```
+4. Output pagination
 
 5. In the output make patch
